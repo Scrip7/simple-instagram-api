@@ -2,8 +2,10 @@
   "name": "simple-instagram-api",
   "version": "0.0.1",
   "description": "Simple instagram API to scrape post details by their unique code",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
+  "types": "dist/src/types.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "repository": {
