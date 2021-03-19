@@ -1,0 +1,22 @@
+name: Testing Cron
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Node v14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run test
