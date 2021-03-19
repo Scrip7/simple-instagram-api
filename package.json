@@ -1,11 +1,26 @@
 {
   "name": "instagram-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "Simple instagram API to scrape post details by their unique code",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scrip7/simple-instagram-api.git"
+  },
+  "homepage": "https://github.com/Scrip7/simple-instagram-api",
+  "bugs": {
+    "url": "https://github.com/Scrip7/simple-instagram-api/issues"
+  },
+  "keywords": [
+    "instagram",
+    "api",
+    "scrape",
+    "client",
+    "node"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {},
