@@ -3,6 +3,8 @@
     <a href="https://www.npmjs.com/package/simple-instagram-api"><img src="https://img.shields.io/npm/v/simple-instagram-api.svg?maxAge=3600" alt="NPM version" /></a>
     <a href="https://www.npmjs.com/package/simple-instagram-api"><img src="https://img.shields.io/npm/dt/simple-instagram-api.svg?maxAge=3600" alt="NPM downloads" /></a>
     <a href="https://github.com/Scrip7/simple-instagram-api/actions"><img src="https://github.com/Scrip7/simple-instagram-api/workflows/Testing%20Cron/badge.svg" alt="Build status" /></a>
+    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/simple-instagram-api">
+    <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/simple-instagram-api">
   </p>
   <p>
     <a href="https://www.npmjs.com/package/simple-instagram-api"><img src="https://nodei.co/npm/simple-instagram-api.png?downloads=true&stars=true" alt="npm install info" /></a>
