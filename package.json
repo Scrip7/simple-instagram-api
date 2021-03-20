@@ -24,13 +24,14 @@
     "node"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.14.35",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "typescript": "^4.2.3"
   }
 }
