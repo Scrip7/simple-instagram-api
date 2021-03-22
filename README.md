@@ -1,3 +1,5 @@
+# simple-instagram-api
+
 <div align="center">
   <p>
     <a href="https://www.npmjs.com/package/simple-instagram-api"><img src="https://img.shields.io/npm/v/simple-instagram-api.svg?maxAge=3600" alt="NPM version" /></a>
@@ -11,19 +13,20 @@
 
 A simple package to extract Media download links on Instagram by having their unique Postcode.
 
-**Table of contents**
-- [Features](#features)
-- [Installation](#installation)
-- [Example Usage](#example-usage)
-- [Running tests](#running-tests)
+## 📋 Table of contents
 
-## Features
+-   [Features](#features)
+-   [Installation](#installation)
+-   [Example Usage](#example-usage)
+-   [Running tests](#running-tests)
+
+## 🚀 Features
 
 - It **does not** require any login information
 - Can fetch **IG-TV** and **album** posts
 - **Zero** dependency
 
-## Installation
+## 📝 Installation
 
 Install `simple-instagram-api` from npm:
 
@@ -31,7 +34,7 @@ Install `simple-instagram-api` from npm:
 npm install simple-instagram-api
 ```
 
-## Example Usage
+## 📖 Example Usage
 
 ```TypeScript
 import InstagramApi from "simple-instagram-api";
@@ -82,7 +85,7 @@ Response:
 }
 ```
 
-## Running tests
+## ⭐ Running tests
 
 ```sh
 npm run test
