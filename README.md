@@ -4,6 +4,7 @@
     <a href="https://github.com/Scrip7/simple-instagram-api/actions"><img src="https://github.com/Scrip7/simple-instagram-api/workflows/Testing/badge.svg" alt="Testing" /></a>
     <a href="https://github.com/Scrip7/simple-instagram-api/actions"><img src="https://github.com/Scrip7/simple-instagram-api/workflows/Testing%20Cron/badge.svg" alt="Testing cron" /></a>
     <a href="https://www.npmjs.com/package/simple-instagram-api"><img src="https://img.shields.io/npm/dt/simple-instagram-api.svg?maxAge=3600" alt="NPM downloads" /></a>
+    <a href="https://app.codacy.com/gh/Scrip7/simple-instagram-api"><img src="https://app.codacy.com/project/badge/Grade/56a6625b29034fa4a921c3ef99e55b62" alt="Code quality"/></a>
     <img alt="NPM bundle size" src="https://img.shields.io/bundlephobia/minzip/simple-instagram-api" />
   </p>
 </div>
