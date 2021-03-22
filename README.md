@@ -22,9 +22,9 @@ A simple package to extract Media download links on Instagram by having their un
 
 ## 🚀 Features
 
-- It **does not** require any login information
-- Can fetch **IG-TV** and **album** posts
-- **Zero** dependency
+-   It **does not** require any login information
+-   Can fetch **IG-TV** and **album** posts
+-   **Zero** dependency
 
 ## 📝 Installation
 
