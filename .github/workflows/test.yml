@@ -1,8 +1,6 @@
-name: Testing Cron
+name: Testing
 
-on:
-  schedule:
-    - cron: "*/5 * * * *"
+on: [push, pull_request]
 
 jobs:
   test:
