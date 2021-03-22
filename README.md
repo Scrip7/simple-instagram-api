@@ -15,10 +15,10 @@ A simple package to extract Media download links on Instagram by having their un
 
 ## 📋 Table of contents
 
--   [Features](#features)
--   [Installation](#installation)
--   [Example Usage](#example-usage)
--   [Running tests](#running-tests)
+-   [Features](#-features)
+-   [Installation](#-installation)
+-   [Example Usage](#-example-usage)
+-   [Running tests](#-running-tests)
 
 ## 🚀 Features
 
