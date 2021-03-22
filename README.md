@@ -33,13 +33,12 @@ npm install simple-instagram-api
 ## Example Usage
 
 ```TypeScript
-import { InstagramApi } from "simple-instagram-api";
+import InstagramApi from "simple-instagram-api";
 
 // https://www.instagram.com/p/CMf29lRF52W/
 const code = "CMf29lRF52W";
-const api = new InstagramApi();
 
-api.get(code).then((result) => {
+InstagramApi.get(code).then((result) => {
   console.log(result);
 });
 ```
