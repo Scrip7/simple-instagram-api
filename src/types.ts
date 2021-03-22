@@ -4,12 +4,14 @@ export interface InstagramPostResponse {
   is_video: boolean;
   url: string;
   caption?: string;
-  children: {
-    id: string;
-    code: string;
-    is_video: boolean;
-    url: string;
-  }[];
+  children: InstagramPostChild[];
+}
+
+export interface InstagramPostChild {
+  id: string;
+  code: string;
+  is_video: boolean;
+  url: string;
 }
 
 export interface InstagramAdditionalDataResponse {
@@ -38,7 +40,7 @@ interface InstagramAdditionalDataCaptionEdge {
   };
 }
 
-interface InstagramAdditionalDataChildren {
+export interface InstagramAdditionalDataChildren {
   node: {
     id: string;
     shortcode: string;
