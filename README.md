@@ -1,5 +1,3 @@
-A simple package to extract Media download links on Instagram by having their unique Postcode.
-
 <div align="center">
   <p>
     <a href="https://www.npmjs.com/package/simple-instagram-api"><img src="https://img.shields.io/npm/v/simple-instagram-api.svg?maxAge=3600" alt="NPM version" /></a>
@@ -9,6 +7,8 @@ A simple package to extract Media download links on Instagram by having their un
     <img alt="NPM bundle size" src="https://img.shields.io/bundlephobia/minzip/simple-instagram-api" />
   </p>
 </div>
+
+A simple package to extract Media download links on Instagram by having their unique Postcode.
 
 **Table of contents**
 - [Features](#features)
