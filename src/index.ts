@@ -117,7 +117,7 @@ export default class InstagramApi {
   }
 
   private static getReelUrl(postCode: string) {
-    return `https://www.instagram.com/reel/${postCode}/`;
+    return `https://www.instagram.com/p/${postCode}/`;
   }
 
   private static async sendHttpRequest(url: string): Promise<string> {
