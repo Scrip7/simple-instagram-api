@@ -76,22 +76,20 @@ export default class InstagramApi {
      */
     if (regexCaptionResult) caption = regexCaptionResult[3].replace(/<[^>]*>/g, '').trim();
 
+    // Check if the media is "reel"
     const regexMediaTypeResult = /data-media-type="(.*?)"/gs.exec(html);
-    if (regexMediaTypeResult) {
-      // Check if the media is "reel"
-      if (regexMediaTypeResult[1] === 'GraphVideo') {
-        const response = await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1]));
-        const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(response);
-        if (regexVideoUrlResult) {
-          return {
-            id: regexMediaIdResult[1],
-            code: regexCodeResult[1],
-            is_video: true,
-            url: regexVideoUrlResult[1],
-            caption,
-            children: [],
-          };
-        }
+    if (regexMediaTypeResult && regexMediaTypeResult[1] === 'GraphVideo') {
+      const response = await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1]));
+      const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(response);
+      if (regexVideoUrlResult) {
+        return {
+          id: regexMediaIdResult[1],
+          code: regexCodeResult[1],
+          is_video: true,
+          url: regexVideoUrlResult[1],
+          caption,
+          children: [],
+        };
       }
     }
 
