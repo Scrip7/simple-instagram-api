@@ -10,7 +10,7 @@ export default class InstagramApi {
   static async get(code: string): Promise<InstagramPostResponse> {
     if (!code) throw new Error('Post code is required.');
     if (!code.match(/^[a-zA-Z0-9_-]*$/gi)) throw new Error('Invalid post code.');
-    const htmlPage = await InstagramApi.sendHttpRequest(code);
+    const htmlPage = await InstagramApi.sendHttpRequest(InstagramApi.getEmbedUrl(code));
     const regexResults = /window\.__additionalDataLoaded\('extra',(.*?)\);<\/script>/gs.exec(htmlPage);
     if (!regexResults) throw new Error('Regex failed! Could not get additional data');
     const additionalData = JSON.parse(regexResults[1]);
@@ -47,7 +47,7 @@ export default class InstagramApi {
     });
   }
 
-  private static mapHtmlPage(html: string) {
+  private static async mapHtmlPage(html: string) {
     /**
      * Extract id
      */
@@ -71,11 +71,29 @@ export default class InstagramApi {
      */
     let caption;
     const regexCaptionResult = /class="Caption"(.*?)class="CaptionUsername"(.*?)<\/a>(.*?)<div/gs.exec(html);
-    if (regexCaptionResult) caption = regexCaptionResult[3].replace(/<[^>]*>/g, '').trim();
-
     /**
      * Replace all html tags and trim the result
      */
+    if (regexCaptionResult) caption = regexCaptionResult[3].replace(/<[^>]*>/g, '').trim();
+
+    const regexMediaTypeResult = /data-media-type="(.*?)"/gs.exec(html);
+    if (regexMediaTypeResult) {
+      // Check if the media is "reel"
+      if (regexMediaTypeResult[1] === 'GraphVideo') {
+        const response = await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1]));
+        const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(response);
+        if (regexVideoUrlResult) {
+          return {
+            id: regexMediaIdResult[1],
+            code: regexCodeResult[1],
+            is_video: true,
+            url: regexVideoUrlResult[1],
+            caption,
+            children: [],
+          };
+        }
+      }
+    }
 
     return {
       id: regexMediaIdResult[1],
@@ -87,18 +105,22 @@ export default class InstagramApi {
     };
   }
 
-  private static getUrl(input: string) {
-    return `https://www.instagram.com/p/${input}/embed/captioned/`;
+  private static getEmbedUrl(postCode: string) {
+    return `https://www.instagram.com/p/${postCode}/embed/captioned/`;
   }
 
-  private static async sendHttpRequest(input: string): Promise<string> {
+  private static getReelUrl(postCode: string) {
+    return `https://www.instagram.com/reel/${postCode}/`;
+  }
+
+  private static async sendHttpRequest(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
       https
-        .get(InstagramApi.getUrl(input), (resp) => {
+        .get(url, (resp) => {
           let data: string;
 
           // A chunk of data has been received.
-          resp.on('data', (chunk) => {
+          resp.on('data', (chunk: string) => {
             data += chunk;
           });
 
