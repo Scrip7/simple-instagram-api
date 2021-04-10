@@ -104,6 +104,7 @@ test('Should fetch reel video (+caption)', async () => {
 
   try {
     const post = await InstagramApi.get(postDetails.code);
+    console.log('fetched reel video', post);
     expect(post.id).toBe(postDetails.id);
     expect(post.code).toBe(postDetails.code);
     expect(post.is_video).toBe(true);
