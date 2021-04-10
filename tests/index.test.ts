@@ -98,8 +98,8 @@ test('Should fetch reel video (+caption)', async () => {
   expect.assertions(6);
 
   const postDetails = {
-    code: 'CNSg1Ooo4MW',
-    id: '2545241134752563990',
+    code: 'CJo3TF6BxrJ',
+    id: '2479474799437880009',
   };
 
   try {
