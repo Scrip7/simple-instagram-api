@@ -76,28 +76,34 @@ export default class InstagramApi {
      */
     if (regexCaptionResult) caption = regexCaptionResult[3].replace(/<[^>]*>/g, '').trim();
 
-    // Check if the media is "reel"
+    /**
+     * If the media type is not reel video, return the photo
+     */
     const regexMediaTypeResult = /data-media-type="(.*?)"/gs.exec(html);
-    if (regexMediaTypeResult && regexMediaTypeResult[1] === 'GraphVideo') {
-      const response = await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1]));
-      const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(response);
-      if (regexVideoUrlResult) {
-        return {
-          id: regexMediaIdResult[1],
-          code: regexCodeResult[1],
-          is_video: true,
-          url: regexVideoUrlResult[1],
-          caption,
-          children: [],
-        };
-      }
+    if (regexMediaTypeResult && regexMediaTypeResult[1] !== 'GraphVideo') {
+      return {
+        id: regexMediaIdResult[1],
+        code: regexCodeResult[1],
+        is_video: false,
+        url: decodeURI(regexUrlResult[2]).replace(/amp;/g, ''),
+        caption,
+        children: [],
+      };
     }
 
+    /**
+     * Request to fetch reel video url
+     */
+    const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(
+      await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1])),
+    );
+
+    if (!regexVideoUrlResult) throw new Error('Could not fetch reel video url');
     return {
       id: regexMediaIdResult[1],
       code: regexCodeResult[1],
-      is_video: false,
-      url: decodeURI(regexUrlResult[2]).replace(/amp;/g, ''),
+      is_video: true,
+      url: regexVideoUrlResult[1],
       caption,
       children: [],
     };
