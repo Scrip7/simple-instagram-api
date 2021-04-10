@@ -95,7 +95,10 @@ export default class InstagramApi {
      * Request to fetch reel video url
      */
     const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(
-      await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1])),
+      await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1])).then((response) => {
+        console.log(response);
+        return response;
+      }),
     );
 
     if (!regexVideoUrlResult) throw new Error('Could not fetch reel video url');
