@@ -1,6 +1,6 @@
 {
   "name": "simple-instagram-api",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A simple package to extract Media download links on Instagram by having their unique Postcode. No login required!",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
