@@ -94,6 +94,27 @@ test('Should fetch IGTV video (+caption)', async () => {
   }
 });
 
+test('Should fetch reel video (+caption)', async () => {
+  expect.assertions(6);
+
+  const postDetails = {
+    code: 'CNSg1Ooo4MW',
+    id: '2545241134752563990',
+  };
+
+  try {
+    const post = await InstagramApi.get(postDetails.code);
+    expect(post.id).toBe(postDetails.id);
+    expect(post.code).toBe(postDetails.code);
+    expect(post.is_video).toBe(true);
+    expect(stringIsAValidUrl(post.url)).toBe(true);
+    expect(post.caption).toBeTruthy();
+    expect(post.children).toStrictEqual([]);
+  } catch (err) {
+    fail(err);
+  }
+});
+
 test('Should fetch photo album (+caption)', async () => {
   expect.assertions(6);
 
