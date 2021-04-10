@@ -94,19 +94,28 @@ export default class InstagramApi {
     /**
      * Request to fetch reel video url
      */
+    /*
     const regexVideoUrlResult = /property="og:video" content="(.*?)"/.exec(
-      await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1])).then((response) => {
-        console.log(response);
-        return response;
-      }),
+      await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1])),
     );
-
     if (!regexVideoUrlResult) throw new Error('Could not fetch reel video url');
     return {
       id: regexMediaIdResult[1],
       code: regexCodeResult[1],
       is_video: true,
       url: regexVideoUrlResult[1],
+      caption,
+      children: [],
+    };
+    */
+    const reelResponse = await InstagramApi.sendHttpRequest(InstagramApi.getReelUrl(regexCodeResult[1]));
+    const reel = JSON.parse(reelResponse.replace('undefined', ''));
+
+    return {
+      id: reel.graphql.shortcode_media.id,
+      code: reel.graphql.shortcode_media.shortcode,
+      is_video: true,
+      url: reel.graphql.shortcode_media.video_url,
       caption,
       children: [],
     };
@@ -117,7 +126,7 @@ export default class InstagramApi {
   }
 
   private static getReelUrl(postCode: string) {
-    return `https://www.instagram.com/p/${postCode}/`;
+    return `https://www.instagram.com/reel/${postCode}/?__a=1`;
   }
 
   private static async sendHttpRequest(url: string): Promise<string> {
